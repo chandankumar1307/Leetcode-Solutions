@@ -19,21 +19,26 @@ class Solution {
     public boolean isValid(String s) {
 
         boolean flag = true;
-        char a;
+        char a, a1;
         if (s.length() % 2 != 0)
             flag = false;
         else {
             for (int i = 0; i < s.length(); i = i + 2) {
                 a = s.charAt(i);
+                a1 = s.charAt(s.length() - i);
                 int index = checkIndex(a);
+                // int index1 = checkIndex(a1);
                 if (index == -1) {
                     flag = false;
 
                 } else {
-                    if (brakcets[index + 1] != s.charAt(index + 1)) {
+                    if (brakcets[index + 1] != s.charAt(i + 1)) {
                         flag = false;
                         break;
                     }
+                    // else if(brakcets[index+1]!=brakcets[index1]){
+
+                    // }
                 }
             }
         }
