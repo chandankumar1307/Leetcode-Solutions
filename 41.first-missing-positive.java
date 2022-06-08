@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-import java.util.*;
+import java.util.Arrays;
 
 class Solution {
     public int firstMissingPositive(int[] nums) {
