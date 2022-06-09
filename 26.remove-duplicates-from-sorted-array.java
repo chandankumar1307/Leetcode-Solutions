@@ -16,7 +16,7 @@ class Solution {
             int p = i + 1;
             if (p == nums.length)
                 break;
-            while (nums[p] == nums[i]) {
+            while (nums[p] == nums[i] && nums[i] != a) {
                 nums[p] = a;
                 p++;
                 k--;
