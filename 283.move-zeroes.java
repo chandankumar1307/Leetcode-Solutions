@@ -5,20 +5,22 @@
  */
 
 // @lc code=start
+
+import java.util.*;
 class Solution {
     public void moveZeroes(int[] nums) {
-        int l=nums.length;
-        int p1=0,p2=0;
-        while(p1<=l && p2<=l){
-            if(p1!=0){
-                p1++;
-                p2++;
+        int c = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                int t = nums[i];
+                nums[i] = nums[c];
+                nums[c] = t;
+                c++;
             }
+
         }
-        
+
     }
-
-
 }
 // @lc code=end
-
+>>>>>>> origin/main
