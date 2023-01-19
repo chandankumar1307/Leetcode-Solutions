@@ -8,32 +8,17 @@
 import java.util.*;
 
 class Solution {
-    public int maxSubArray(int[] nums) {
-        int l = nums.length;
-        int i = 0, s = 0, m = nums[0];
-        int[] b = new int[l];
-
-        while (i != l) {
-            b[i] = nums[i];
-            i++;
+    public int maxSubArray(int[] arr) {
+        int sum = 0;
+        int n = arr.length;
+        int max = arr[0];
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+            max = Math.max(sum, max);
+            if (sum < 0)
+                sum = 0;
         }
-
-        Arrays.sort(b);
-        if (b[l - 1] <= 0)
-            return b[l - 1];
-
-        i = 0;
-        while (i != l) {
-            s += nums[i];
-            if (s < 0) {
-                s = 0;
-            } else if (s > m)
-                m = s;
-            // System.out.println(m);
-            i++;
-        }
-        // System.out.println(m);
-        return m;
+        return max;
     }
 }
 // @lc code=end
