@@ -5,45 +5,44 @@
  */
 
 // @lc code=start
-import java.util.*;
-
 class Solution {
-
-    int isSorted(int[] array) {
-
-        for (int i = 0; i < array.length - 1; i++) {
-            if (array[i] > array[i + 1])
-                return 1;
+    public void nextPermutation(int[] nums) {
+        if (nums == null || nums.length <= 1)
+            return;
+        int k = -1;
+        for (int i = nums.length - 2; i >= 0; i--) {
+            if (nums[i] < nums[i + 1]) {
+                k = i;
+                break;
+            }
         }
-
-        for (int i = 0; i < array.length - 1; i++) {
-            if (array[i] < array[i + 1])
-                return 2;
+        if (k == -1) {
+            reverse(nums, 0);
+            return;
         }
-        return -1;
+        int p = 0;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            if (nums[i] > nums[k]) {
+                p = i;
+                break;
+            }
+        }
+        swap(nums, k, p);
+
+        reverse(nums, k + 1);
+
     }
 
-    public void nextPermutation(int[] nums) {
+    void swap(int a[], int i, int j) {
+        int t = a[i];
+        a[i] = a[j];
+        a[j] = t;
+    }
 
-        if (nums.length > 3) {
-
-            int t = nums[0];
-            int t2 = nums[1];
-            int t3 = nums[2];
-            int check = isSorted(nums);
-            System.out.println(check);
-
-            if (check == 2)
-                Arrays.sort(nums);
-            else if (check == -1) {
-
-                nums[0] = t2;
-                nums[1] = t3;
-                nums[2] = t;
-            } else {
-                nums[1] = t3;
-                nums[2] = t2;
-            }
+    void reverse(int a[], int n) {
+        int j = a.length - 1;
+        while (n < j) {
+            swap(a, n++, j--);
         }
 
     }
